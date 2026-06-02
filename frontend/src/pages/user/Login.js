@@ -38,7 +38,7 @@ export default function Login() {
               <label style={{ fontSize: 13, fontWeight: 600, display: 'block', marginBottom: 8, color: '#374151' }}>Password</label>
               <input type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} placeholder="••••••••" required />
             </div>
-
+ 
             {/* Quick fill for demo */}
             {/* <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
               <button type="button" onClick={() => setForm({ email: 'admin@sweetoven.com', password: 'admin123' })} style={{ flex: 1, padding: '6px', border: '1px solid #E5E7EB', borderRadius: 8, background: '#FFF8F0', fontSize: 12, color: '#6B7280', cursor: 'pointer' }}>
