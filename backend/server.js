@@ -10,6 +10,8 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5000',
+  'https://sweetoven-2t3a-7xl8c6tjj-biswajit-beras-projects.vercel.app',
+  'https://sweetoven-2t3a-7fib0q2qb-biswajit-beras-projects.vercel.app',
   process.env.FRONTEND_URL || '',
 ].filter(Boolean);
 
