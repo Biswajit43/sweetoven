@@ -109,6 +109,81 @@ export default function Cakes() {
           </div>
         )}
       </div>
+      <style>{`
+        @media (max-width: 1024px) {
+          div[style*="grid-template-columns: repeat(auto-fill, minmax(250px"] {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important;
+            gap: 18px !important;
+          }
+        }
+        @media (max-width: 768px) {
+          div[style*="background: linear-gradient(135deg, #FFF0F7"] h1 {
+            font-size: 28px;
+          }
+          div[style*="grid-template-columns: repeat(auto-fill, minmax(250px"] {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)) !important;
+            gap: 16px !important;
+          }
+          .card div[style*="height: 210px"] {
+            height: 160px !important;
+          }
+          .card div[style*="padding: 16px"] h3 {
+            font-size: 14px;
+          }
+          button[style*="padding: '8px 20px'"] {
+            padding: 6px 12px !important;
+            font-size: 12px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          div[style*="padding: '32px 20px'"] {
+            padding: 16px 12px !important;
+          }
+          div[style*="background: linear-gradient(135deg, #FFF0F7"] {
+            padding: 32px 0 24px !important;
+          }
+          div[style*="background: linear-gradient(135deg, #FFF0F7"] h1 {
+            font-size: 22px;
+          }
+          div[style*="background: linear-gradient(135deg, #FFF0F7"] > div > p {
+            font-size: 13px;
+          }
+          div[style*="grid-template-columns: repeat(auto-fill, minmax(250px"] {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
+            gap: 12px !important;
+          }
+          .card {
+            border-radius: 12px;
+          }
+          .card div[style*="height: 160px"] {
+            height: 140px !important;
+          }
+          .card div[style*="padding: 16px"] {
+            padding: 12px !important;
+          }
+          .card div[style*="padding: 16px"] > div:nth-child(2) {
+            font-size: 12px !important;
+          }
+          .card div[style*="padding: 16px"] h3 {
+            font-size: 13px;
+            margin-bottom: 2px;
+          }
+          .card div[style*="padding: 16px"] p {
+            font-size: 11px !important;
+            margin-bottom: 8px;
+          }
+          .card div[style*="display: 'flex'"] {
+            gap: 6px !important;
+          }
+          .card div[style*="display: 'flex'"] span {
+            font-size: 16px !important;
+          }
+          .card button {
+            padding: 6px 10px !important;
+            font-size: 11px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

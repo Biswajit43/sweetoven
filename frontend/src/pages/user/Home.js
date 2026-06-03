@@ -83,7 +83,7 @@ export default function Home() {
             <p style={{ fontSize: 16, color: '#6B7280', marginBottom: 36, lineHeight: 1.7 }}>
               Delicious cakes made fresh for every special moment.
             </p>
-            <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'center', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/cakes')} className="btn-primary" style={{ fontSize: 16, padding: '14px 32px' }}>
                 Order Now
               </button>
@@ -123,6 +123,45 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <style>{`
+          @media (max-width: 1024px) {
+            section:first-of-type .container { gap: 40px; }
+          }
+          @media (max-width: 768px) {
+            section:first-of-type .container {
+              grid-template-columns: 1fr;
+              gap: 32px;
+              padding: 0 16px;
+            }
+            section:first-of-type h1 { font-size: 36px; }
+            section:first-of-type div[style*="grid-template-columns: repeat(4"] {
+              grid-template-columns: repeat(2, 1fr) !important;
+            }
+            section:first-of-type div[style*="width: 380px"] {
+              width: 280px !important;
+              height: 280px !important;
+            }
+            section:first-of-type img[style*="width: 320px"] {
+              width: 240px !important;
+              height: 240px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            section:first-of-type h1 { font-size: 28px; }
+            section:first-of-type p { font-size: 14px; }
+            section:first-of-type div[style*="grid-template-columns: repeat(4"] {
+              grid-template-columns: 1fr !important;
+            }
+            section:first-of-type div[style*="width: 280px"] {
+              width: 240px !important;
+              height: 240px !important;
+            }
+            section:first-of-type img[style*="width: 240px"] {
+              width: 200px !important;
+              height: 200px !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Popular Cakes */}
@@ -194,6 +233,39 @@ export default function Home() {
             ))}
           </div>
         </div>
+        <style>{`
+          @media (max-width: 1024px) {
+            section:nth-of-type(3) > div > div:last-child > div {
+              padding: 0 8px !important;
+              min-width: 100px !important;
+              font-size: 12px;
+            }
+          }
+          @media (max-width: 768px) {
+            section:nth-of-type(3) > div > div:last-child {
+              flex-wrap: wrap;
+            }
+            section:nth-of-type(3) > div > div:last-child > div {
+              flex: 0 1 calc(50% - 8px) !important;
+              padding: 16px 8px !important;
+            }
+            section:nth-of-type(3) > div > div:last-child > div:nth-child(odd):not(:last-child) > div:nth-of-type(2),
+            section:nth-of-type(3) > div > div:last-child > div:nth-child(even):not(:last-child) > div:nth-of-type(2) {
+              display: none;
+            }
+          }
+          @media (max-width: 480px) {
+            section:nth-of-type(3) > div > div:last-child > div {
+              flex: 0 1 100% !important;
+              padding: 12px 0 !important;
+            }
+            section:nth-of-type(3) > div > div:last-child > div > div:first-child {
+              width: 48px !important;
+              height: 48px !important;
+              font-size: 20px;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Custom Cake Banner */}
@@ -213,6 +285,33 @@ export default function Home() {
             <div style={{ fontSize: 80, opacity: 0.3 }}>🎂</div>
           </div>
         </div>
+        <style>{`
+          @media (max-width: 768px) {
+            div[style*="background: linear-gradient(135deg, #3D1C02"] {
+              grid-template-columns: 1fr !important;
+              padding: 32px !important;
+              gap: 20px !important;
+            }
+            div[style*="background: linear-gradient(135deg, #3D1C02"] > h2 {
+              font-size: 24px !important;
+            }
+            div[style*="background: linear-gradient(135deg, #3D1C02"] > div:last-child {
+              text-align: center;
+              font-size: 60px !important;
+            }
+          }
+          @media (max-width: 480px) {
+            div[style*="background: linear-gradient(135deg, #3D1C02"] {
+              padding: 24px !important;
+            }
+            div[style*="background: linear-gradient(135deg, #3D1C02"] > h2 {
+              font-size: 20px !important;
+            }
+            div[style*="background: linear-gradient(135deg, #3D1C02"] > p {
+              font-size: 13px !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* Footer */}
@@ -248,6 +347,25 @@ export default function Home() {
             Made by Biswajit
           </div>
         </div>
+        <style>{`
+          @media (max-width: 768px) {
+            footer > div > div:first-child {
+              grid-template-columns: 1fr !important;
+              gap: 24px !important;
+            }
+            footer > div > div:first-child > div:not(:first-child) {
+              text-align: left;
+            }
+          }
+          @media (max-width: 480px) {
+            footer { padding: 32px 0 16px; }
+            footer > div > div:first-child {
+              gap: 16px !important;
+            }
+            footer h4 { font-size: 13px; }
+            footer p { font-size: 12px; }
+          }
+        `}</style>
       </footer>
     </div>
   );

@@ -70,9 +70,9 @@ export default function OrderForm() {
           {cake && (
             <div className="card" style={{ padding: 24 }}>
               <h3 style={{ marginBottom: 16, fontSize: 18 }}>Selected Cake</h3>
-              <div style={{ display: 'flex', gap: 20, alignItems: 'center' }}>
+              <div style={{ display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap' }}>
                 <img src={cake.image} alt={cake.name} style={{ width: 80, height: 80, borderRadius: 12, objectFit: 'cover' }} />
-                <div style={{ flex: 1 }}>
+                <div style={{ flex: 1, minWidth: 200 }}>
                   <div style={{ fontWeight: 600, fontSize: 16 }}>{cake.name}</div>
                   <div style={{ color: '#9CA3AF', fontSize: 14 }}>{cake.weight}</div>
                   <div style={{ color: '#E91E7A', fontWeight: 700, fontSize: 18, marginTop: 4 }}>₹{cake.price}</div>
@@ -98,6 +98,84 @@ export default function OrderForm() {
               <div>
                 <label style={{ fontSize: 13, fontWeight: 500, color: '#374151', display: 'block', marginBottom: 6 }}>Delivery Time *</label>
                 <select value={form.deliveryTime} onChange={e => setForm({ ...form, deliveryTime: e.target.value })}>
+                  <option value="">Select time slot</option>
+                  {['10:00 AM - 12:00 PM', '12:00 PM - 2:00 PM', '2:00 PM - 4:00 PM', '4:00 PM - 6:00 PM', '6:00 PM - 8:00 PM', '5:00 PM - 7:00 PM'].map(t => <option key={t} value={t}>{t}</option>)}
+                </select>
+              </div>
+            </div>
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ fontSize: 13, fontWeight: 500, color: '#374151', display: 'block', marginBottom: 6 }}>Delivery Address *</label>
+              <textarea value={form.deliveryAddress} onChange={e => setForm({ ...form, deliveryAddress: e.target.value })}
+                placeholder="Enter full delivery address..." rows={3} />
+            </div>
+            <div>
+              <label style={{ fontSize: 13, fontWeight: 500, color: '#374151', display: 'block', marginBottom: 6 }}>Order Note (Optional)</label>
+              <textarea value={form.orderNote} onChange={e => setForm({ ...form, orderNote: e.target.value })}
+                placeholder="Any special instructions? (message on cake, flavor preference...)" rows={2} />
+            </div>
+          </div>
+
+          {/* Coupon */}
+          <div className="card" style={{ padding: 24 }}>
+            <h3 style={{ marginBottom: 16, fontSize: 18 }}>Coupon Code</h3>
+            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+              <input value={couponCode} onChange={e => { setCouponCode(e.target.value); setCouponMsg(''); }}
+                placeholder="Enter coupon code" style={{ flex: 1, minWidth: 200 }} />
+              <button onClick={handleCoupon} className="btn-outline" style={{ whiteSpace: 'nowrap' }}>Apply</button>
+            </div>
+            {couponMsg && <p style={{ marginTop: 8, fontSize: 13, color: couponDiscount > 0 ? '#22C55E' : '#EF4444' }}>{couponMsg}</p>}
+          </div>
+
+          {/* Order Summary */}
+          <div className="card" style={{ padding: 24 }}>
+            <h3 style={{ marginBottom: 16, fontSize: 18 }}>Order Summary</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, color: '#6B7280', flexWrap: 'wrap' }}>
+                <span>Cake ({quantity} × ₹{cake?.price || 0})</span>
+                <span>₹{(cake?.price || 0) * quantity}</span>
+              </div>
+              {couponDiscount > 0 && (
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, color: '#22C55E', flexWrap: 'wrap' }}>
+                  <span>Coupon Discount</span><span>-₹{couponDiscount}</span>
+                </div>
+              )}
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, color: '#6B7280', flexWrap: 'wrap' }}>
+                <span>Delivery</span><span style={{ color: '#22C55E' }}>FREE</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 20, fontWeight: 700, color: '#E91E7A', borderTop: '1px solid #F3F4F6', paddingTop: 12, marginTop: 4, flexWrap: 'wrap' }}>
+                <span>Total Amount</span><span>₹{total}</span>
+              </div>
+            </div>
+            <button onClick={handleSubmit} disabled={loading} className="btn-primary" style={{ width: '100%', marginTop: 20, padding: '14px', fontSize: 16 }}>
+              {loading ? 'Placing Order...' : 'Request Order'}
+            </button>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 768px) {
+          div > h1 { font-size: 24px !important; }
+          .card { padding: 18px !important; }
+          .card h3 { font-size: 16px !important; }
+          div[style*="grid-template-columns: '1fr 1fr'"] {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .container { padding: 0 12px !important; }
+          div > h1 { font-size: 20px !important; }
+          div > p { font-size: 12px !important; }
+          .card { padding: 16px !important; margin: 0; }
+          .card h3 { font-size: 14px; margin-bottom: 12px; }
+          div[style*="flex: 1, minWidth: 200"] {
+            min-width: 150px !important;
+          }
+          input, textarea, select { font-size: 14px; padding: 8px 10px; }
+          button { padding: 12px 16px !important; }
+        }
+      `}</style>
+    </div>
+  );
                   <option value="">Select time slot</option>
                   {['10:00 AM - 12:00 PM', '12:00 PM - 2:00 PM', '2:00 PM - 4:00 PM', '4:00 PM - 6:00 PM', '6:00 PM - 8:00 PM', '5:00 PM - 7:00 PM'].map(t => <option key={t} value={t}>{t}</option>)}
                 </select>

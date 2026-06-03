@@ -122,3 +122,58 @@ input:focus, textarea:focus, select:focus { border-color: var(--pink); }
 @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
 
 .fade-in { animation: fadeIn 0.5s ease forwards; }
+
+/* =============== RESPONSIVE DESIGN =============== */
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  :root {
+    --shadow: 0 2px 12px rgba(233,30,122,0.08);
+    --shadow-lg: 0 4px 20px rgba(233,30,122,0.12);
+  }
+
+  .container { padding: 0 16px; }
+
+  h1 { font-size: 28px !important; }
+  h2 { font-size: 24px !important; }
+  h3 { font-size: 18px !important; }
+  p { font-size: 14px !important; }
+
+  .btn-primary, .btn-outline, .btn-brown {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+
+  input, textarea, select {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  :root {
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  .container { padding: 0 14px; }
+
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 16px !important; }
+  p { font-size: 13px !important; }
+
+  .btn-primary, .btn-outline, .btn-brown {
+    padding: 8px 16px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  input, textarea, select {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+
+  .badge { font-size: 10px; padding: 3px 8px; }
+}

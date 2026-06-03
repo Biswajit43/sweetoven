@@ -17,7 +17,7 @@ export default function Register() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #FFF0F7 0%, #FFF8F0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #FFF0F7 0%, #FFF8F0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <div style={{ width: '100%', maxWidth: 420 }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <div style={{ fontSize: 48, marginBottom: 8 }}>🎉</div>
@@ -46,6 +46,14 @@ export default function Register() {
           </p>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 480px) {
+          div > div:first-child { margin-bottom: 24px; }
+          div > div:first-child h1 { font-size: 24px; }
+          div > div:first-child p { font-size: 13px; }
+          .card { padding: 24px !important; }
+        }
+      `}</style>
     </div>
   );
 }

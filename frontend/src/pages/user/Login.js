@@ -20,7 +20,7 @@ export default function Login() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #FFF0F7 0%, #FFF8F0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #FFF0F7 0%, #FFF8F0 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
       <div style={{ width: '100%', maxWidth: 420 }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <div style={{ fontSize: 48, marginBottom: 8 }}>🎂</div>
@@ -38,13 +38,6 @@ export default function Login() {
               <label style={{ fontSize: 13, fontWeight: 600, display: 'block', marginBottom: 8, color: '#374151' }}>Password</label>
               <input type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} placeholder="••••••••" required />
             </div>
- 
-            {/* Quick fill for demo */}
-            {/* <div style={{ display: 'flex', gap: 8, marginBottom: 20 }}>
-              <button type="button" onClick={() => setForm({ email: 'admin@sweetoven.com', password: 'admin123' })} style={{ flex: 1, padding: '6px', border: '1px solid #E5E7EB', borderRadius: 8, background: '#FFF8F0', fontSize: 12, color: '#6B7280', cursor: 'pointer' }}>
-                👑 Try Admin
-              </button>
-            </div> */}
 
             <button type="submit" disabled={loading} className="btn-primary" style={{ width: '100%', padding: 14, fontSize: 16 }}>
               {loading ? 'Signing in...' : 'Sign In'}
@@ -56,6 +49,14 @@ export default function Login() {
           </p>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 480px) {
+          div > div:first-child { margin-bottom: 24px; }
+          div > div:first-child h1 { font-size: 24px; }
+          div > div:first-child p { font-size: 13px; }
+          .card { padding: 24px !important; }
+        }
+      `}</style>
     </div>
   );
 }

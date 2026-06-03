@@ -33,7 +33,7 @@ export default function Navbar() {
       background: 'white', boxShadow: '0 2px 20px rgba(0,0,0,0.08)',
       position: 'sticky', top: 0, zIndex: 100
     }}>
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 70 }}>
+      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 70, padding: '0 20px' }}>
         <Logo />
 
         {/* Desktop Nav */}
@@ -51,7 +51,7 @@ export default function Navbar() {
             <>
               {user.role !== 'admin' && (
                 <Link to="/my-orders" style={{ padding: '8px 16px', borderRadius: 50, background: '#FFF0F7', color: '#E91E7A', fontSize: 13, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <FiPackage size={15} /> My Orders
+                  <FiPackage size={15} /> <span className="mobile-hide">My Orders</span>
                 </Link>
               )}
               <div style={{ position: 'relative' }}>
@@ -93,11 +93,11 @@ export default function Navbar() {
             </>
           ) : (
             <>
-              <Link to="/login" className="btn-outline" style={{ padding: '8px 20px', fontSize: 13 }}>Login</Link>
-              <Link to="/register" className="btn-primary" style={{ padding: '8px 20px', fontSize: 13 }}>Register</Link>
+              <Link to="/login" className="btn-outline mobile-hide" style={{ padding: '8px 20px', fontSize: 13 }}>Login</Link>
+              <Link to="/register" className="btn-primary mobile-hide" style={{ padding: '8px 20px', fontSize: 13 }}>Register</Link>
             </>
           )}
-          <button onClick={() => setMenuOpen(!menuOpen)} style={{ display: 'none', background: 'none', border: 'none', color: '#374151' }} className="mobile-menu-btn">
+          <button onClick={() => setMenuOpen(!menuOpen)} style={{ display: 'none', background: 'none', border: 'none', color: '#374151', padding: 8 }} className="mobile-menu-btn">
             {menuOpen ? <FiX size={22} /> : <FiMenu size={22} />}
           </button>
         </div>
@@ -105,10 +105,16 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div style={{ background: 'white', padding: '16px 20px', borderTop: '1px solid #F3F4F6' }}>
-          {[['/', 'Home'], ['/cakes', 'Cakes'], ['/cakes?cat=Custom', 'Custom Cakes']].map(([href, label]) => (
+        <div style={{ background: 'white', padding: '16px 20px', borderTop: '1px solid #F3F4F6', display: 'none', flexDirection: 'column' }} className="mobile-menu">
+          {[['/', 'Home'], ['/cakes', 'Cakes'], ['/cakes?cat=Custom', 'Custom Cakes'], ['/cakes?cat=Birthday', 'Occasions']].map(([href, label]) => (
             <Link key={href} to={href} onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '10px 0', fontSize: 15, color: '#374151', borderBottom: '1px solid #F9FAFB' }}>{label}</Link>
           ))}
+          {!user && (
+            <>
+              <Link to="/login" onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '10px 0', fontSize: 15, color: '#E91E7A', fontWeight: 600, borderBottom: '1px solid #F9FAFB' }}>Login</Link>
+              <Link to="/register" onClick={() => setMenuOpen(false)} style={{ display: 'block', padding: '10px 0', fontSize: 15, color: '#E91E7A', fontWeight: 600 }}>Register</Link>
+            </>
+          )}
         </div>
       )}
 
@@ -116,6 +122,20 @@ export default function Navbar() {
         @media (max-width: 768px) {
           .desktop-nav { display: none !important; }
           .mobile-menu-btn { display: flex !important; }
+          .mobile-hide { display: none !important; }
+          .mobile-menu { display: flex !important; }
+          nav > div:first-child { padding: 0 16px !important; }
+        }
+        @media (max-width: 480px) {
+          nav > div:first-child { 
+            height: 60px !important;
+            padding: 0 12px !important;
+          }
+          .mobile-menu { padding: 12px 16px !important; }
+          .mobile-menu a {
+            padding: 8px 0 !important;
+            font-size: 14px !important;
+          }
         }
       `}</style>
     </nav>
