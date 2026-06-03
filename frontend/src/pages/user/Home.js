@@ -53,7 +53,12 @@ export default function Home() {
     fetchCakes();
   }, []);
 
-  const filtered = activeCategory === 'All' ? cakes : cakes.filter(c => c.category === activeCategory);
+  const filtered = activeCategory === 'All'
+    ? cakes
+    : cakes.filter(c => {
+        const category = typeof c.category === 'string' ? c.category.toLowerCase() : '';
+        return category.includes(activeCategory.toLowerCase());
+      });
 
   return (
     <div>
@@ -145,7 +150,13 @@ export default function Home() {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 24 }}>
-            {filtered.map(cake => <CakeCard key={cake._id} cake={cake} />)}
+            {filtered.length > 0 ? (
+              filtered.map(cake => <CakeCard key={cake._id} cake={cake} />)
+            ) : (
+              <div style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6B7280', padding: '40px 0' }}>
+                No cakes found for "{activeCategory}".
+              </div>
+            )}
           </div>
 
           <div style={{ textAlign: 'center', marginTop: 40 }}>
