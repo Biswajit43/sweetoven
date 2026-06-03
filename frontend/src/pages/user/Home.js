@@ -56,9 +56,9 @@ export default function Home() {
   const filtered = activeCategory === 'All'
     ? cakes
     : cakes.filter(c => {
-        const category = typeof c.category === 'string' ? c.category.toLowerCase() : '';
-        return category.includes(activeCategory.toLowerCase());
-      });
+      const category = typeof c.category === 'string' ? c.category.toLowerCase() : '';
+      return category.includes(activeCategory.toLowerCase());
+    });
 
   return (
     <div>
@@ -238,14 +238,14 @@ export default function Home() {
             <div>
               <h4 style={{ marginBottom: 16, fontSize: 15 }}>Contact</h4>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, lineHeight: 2 }}>
-                📍 123, MG Road, New Town<br />Kolkata - 700001<br />
+                📍 123 , Pansila<br />Kolkata - 700001<br />
                 📞 +91 98765 43210<br />
                 ✉️ hello@sweetoven.com
               </p>
             </div>
           </div>
           <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: 20, textAlign: 'center', color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>
-            © 2025 SweetOven. Baked with Love. All rights reserved.
+            Made by Biswajit
           </div>
         </div>
       </footer>
