@@ -67,8 +67,8 @@ Edit `.env`:
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/sweetoven
 JWT_SECRET=your_secret_key_here
-ADMIN_EMAIL=admin@sweetoven.com
-ADMIN_PASSWORD=admin123
+ADMIN_EMAIL=ADMIN_EMAIL
+ADMIN_PASSWORD=ADMIN_PASSWORD
 ```
 
 For MongoDB Atlas:
